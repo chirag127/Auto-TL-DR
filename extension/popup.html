@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auto TL;DR</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="popup-container">
     <header>
@@ -24,7 +26,7 @@
 
     <section class="settings">
       <h2>Settings</h2>
-      
+
       <div class="setting-group">
         <label for="summaryStyle">Summary Style:</label>
         <select id="summaryStyle">
@@ -58,6 +60,42 @@
           <option value="system">System Default</option>
         </select>
       </div>
+
+      <h3>Text-to-Speech</h3>
+
+      <div class="setting-group">
+        <div class="toggle-container">
+          <label class="switch">
+            <input type="checkbox" id="enableTTS" checked>
+            <span class="slider round"></span>
+          </label>
+          <span>Enable Text-to-Speech</span>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label for="ttsRate">Speech Rate:</label>
+        <div class="range-container">
+          <input type="range" id="ttsRate" min="0.5" max="16" step="0.1" value="1">
+          <span id="ttsRateValue">1</span>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label for="ttsPitch">Speech Pitch:</label>
+        <div class="range-container">
+          <input type="range" id="ttsPitch" min="0.5" max="2" step="0.1" value="1">
+          <span id="ttsPitchValue">1</span>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label for="ttsVoice">Voice:</label>
+        <select id="ttsVoice">
+          <option value="">Default</option>
+          <!-- Voice options will be populated by JavaScript -->
+        </select>
+      </div>
     </section>
 
     <section class="history" id="historySection">
@@ -75,4 +113,5 @@
 
   <script src="popup.js"></script>
 </body>
+
 </html>
