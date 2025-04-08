@@ -13,7 +13,7 @@ let settings = {
 };
 
 let processedElements = new Set();
-let apiUrl = "http://localhost:3000/api";
+let apiUrl = "https://auto-tl-dr.onrender.com/api";
 let isRedditPage = false;
 let isThreadPage = false;
 let scrollTimeout = null;

@@ -9,16 +9,22 @@
     "contextMenus"
   ],
   "host_permissions": [
-    "http://localhost:3000/*"
+    "https://auto-tl-dr.onrender.com/*"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["styles.css"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
     }
   ],
   "action": {
