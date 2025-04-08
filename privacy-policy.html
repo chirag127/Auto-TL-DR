@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Auto TL;DR</title>
+  <link rel="icon" href="Nextension/icons/icon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #f5f5f5;
+      --text-color: #333;
+      --background-color: #fff;
+      --border-color: #ddd;
+      --hover-color: #e9f2fd;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Dark theme */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #5c9ce6;
+        --secondary-color: #2c2c2c;
+        --text-color: #f0f0f0;
+        --background-color: #222;
+        --border-color: #444;
+        --hover-color: #3a3a3a;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: all 0.3s ease;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    main {
+      padding: 3rem 0;
+    }
+    
+    section {
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--primary-color);
+    }
+    
+    p, ul, ol {
+      margin-bottom: 1rem;
+    }
+    
+    ul, ol {
+      padding-left: 2rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      background-color: #3a80d2;
+      text-decoration: none;
+    }
+    
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .footer-link {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+    
+    .last-updated {
+      font-style: italic;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>Auto TL;DR - Smart Summarizer Extension</p>
+    </div>
+  </header>
+  
+  <main class="container">
+    <section>
+      <h2>Introduction</h2>
+      <p>This Privacy Policy explains how Auto TL;DR ("we", "our", or "us") collects, uses, and shares information about you when you use our browser extension. We respect your privacy and are committed to protecting your personal data.</p>
+      <p>Please read this Privacy Policy carefully to understand our policies and practices regarding your information.</p>
+    </section>
+    
+    <section>
+      <h2>Information We Collect</h2>
+      
+      <h3>Content Data</h3>
+      <p>When you use Auto TL;DR to summarize web content, the extension processes the text content from the webpage you are viewing. This content is:</p>
+      <ul>
+        <li>Temporarily sent to our backend server for processing by the Gemini AI</li>
+        <li>Used solely for the purpose of generating summaries</li>
+        <li>Not stored permanently on our servers</li>
+        <li>Not used for any purpose other than providing the summarization service</li>
+      </ul>
+      
+      <h3>Local Storage</h3>
+      <p>The extension stores the following information locally on your device:</p>
+      <ul>
+        <li>Your extension settings (summary style, trigger mode, etc.)</li>
+        <li>A limited history of recent summaries (up to 10 entries)</li>
+      </ul>
+      <p>This data is stored using the browser's storage API and is not transmitted to our servers.</p>
+      
+      <h3>Usage Data</h3>
+      <p>We may collect anonymous usage data to help improve the extension, such as:</p>
+      <ul>
+        <li>How often the extension is used</li>
+        <li>Which features are most popular</li>
+        <li>Error reports</li>
+      </ul>
+      <p>This data is anonymized and does not contain any personally identifiable information.</p>
+    </section>
+    
+    <section>
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Provide and maintain the Auto TL;DR service</li>
+        <li>Generate text summaries using Gemini AI</li>
+        <li>Improve and optimize the extension</li>
+        <li>Fix bugs and issues</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Third-Party Services</h2>
+      <p>Auto TL;DR uses the following third-party services:</p>
+      
+      <h3>Google Gemini AI</h3>
+      <p>We use Google's Gemini AI to generate summaries. When you use the extension to summarize content, the text is sent to Google's servers via our backend. Google's use of this data is governed by their <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</p>
+      
+      <h3>Browser Storage API</h3>
+      <p>We use your browser's storage API to store settings and summary history locally on your device. This data does not leave your device and is not accessible to us or any third parties.</p>
+    </section>
+    
+    <section>
+      <h2>Data Security</h2>
+      <p>We implement appropriate security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+    </section>
+    
+    <section>
+      <h2>Your Rights</h2>
+      <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+      <ul>
+        <li>The right to access information we have about you</li>
+        <li>The right to correct inaccurate or incomplete information</li>
+        <li>The right to delete your information</li>
+        <li>The right to restrict or object to processing</li>
+        <li>The right to data portability</li>
+      </ul>
+      <p>To exercise these rights, please contact us using the information provided below.</p>
+    </section>
+    
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>Auto TL;DR is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>
+    </section>
+    
+    <section>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+      <p>We encourage you to review this Privacy Policy periodically for any changes.</p>
+    </section>
+    
+    <section>
+      <h2>Contact Us</h2>
+      <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+      <ul>
+        <li>By email: [Your Email Address]</li>
+        <li>By visiting this page on our website: <a href="https://github.com/chirag127/Auto-TL-DR/issues">https://github.com/chirag127/Auto-TL-DR/issues</a></li>
+      </ul>
+    </section>
+    
+    <p class="last-updated">Last Updated: April 8, 2025</p>
+    
+    <a href="index.html" class="back-link">Back to Home</a>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Auto TL;DR. Created by <a href="https://github.com/chirag127" class="footer-link">Chirag Singhal</a>.</p>
+      <div class="footer-links">
+        <a href="https://github.com/chirag127/Auto-TL-DR" class="footer-link">GitHub</a>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="https://github.com/chirag127/Auto-TL-DR/issues" class="footer-link">Report Issues</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

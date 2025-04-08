@@ -2,6 +2,9 @@
 
 Auto TL;DR is a browser extension that provides real-time, AI-generated summaries of articles, threads, Reddit posts, and other long-form content directly in the browser as you scroll. It saves you time, reduces cognitive load, and provides digestible insights across the web.
 
+**Website:** Open `index.html` in your browser to view the landing page.
+**Privacy Policy:** Open `privacy-policy.html` to view the privacy policy.
+
 ## Features
 
 -   **Auto-Summarization on Scroll**: Detects large blocks of text and provides summaries as you scroll.
@@ -111,15 +114,25 @@ The browser extension is built with Manifest V3 and is compatible with Chrome, F
 
 ### Icons
 
-Before using the extension, you need to create icon files:
+The extension includes an SVG icon and a tool to convert it to PNG files:
 
-1. Create the following icon files in the `Nextension/icons/` directory:
+1. Open the icon conversion tool in your browser:
+
+    ```
+    open Nextension/icons/convert-icons.html
+    ```
+
+    or simply open the file in your browser.
+
+2. Click the "Generate Icons" button to create the PNG versions.
+
+3. Download each icon using the download buttons:
 
     - icon16.png (16x16 pixels)
     - icon48.png (48x48 pixels)
     - icon128.png (128x128 pixels)
 
-2. You can use any icon creation tool or online service to create these icons.
+4. The downloaded icons will be saved in the `Nextension/icons/` directory.
 
 ## License
 

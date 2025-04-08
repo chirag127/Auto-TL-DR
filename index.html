@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto TL;DR - Smart Summarizer Extension</title>
+  <link rel="icon" href="Nextension/icons/icon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #f5f5f5;
+      --text-color: #333;
+      --background-color: #fff;
+      --border-color: #ddd;
+      --hover-color: #e9f2fd;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Dark theme */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #5c9ce6;
+        --secondary-color: #2c2c2c;
+        --text-color: #f0f0f0;
+        --background-color: #222;
+        --border-color: #444;
+        --hover-color: #3a3a3a;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: all 0.3s ease;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    .logo {
+      width: 120px;
+      height: 120px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .button.secondary {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+    main {
+      padding: 4rem 0;
+    }
+    
+    section {
+      margin-bottom: 4rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .feature-card {
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px var(--shadow-color);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .demo-image {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px var(--shadow-color);
+    }
+    
+    .installation {
+      background-color: var(--secondary-color);
+      padding: 3rem 0;
+      border-radius: 8px;
+    }
+    
+    .installation-steps {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .step {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    code {
+      background-color: var(--background-color);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+    }
+    
+    pre {
+      background-color: var(--background-color);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .footer-link {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <img src="Nextension/icons/icon.svg" alt="Auto TL;DR Logo" class="logo">
+      <h1>Auto TL;DR</h1>
+      <p class="tagline">Smart summarizer extension that provides real-time, AI-generated summaries as you scroll. Save time and get insights across the web.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/chirag127/Auto-TL-DR" class="button">Get Started</a>
+        <a href="#features" class="button secondary">Learn More</a>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section id="features" class="container">
+      <h2>Features</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3 class="feature-title">Auto-Summarization on Scroll</h3>
+          <p>Detects large blocks of text and provides summaries as you scroll, saving you time on lengthy articles.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🧵</div>
+          <h3 class="feature-title">Thread Summarizer</h3>
+          <p>Summarizes Reddit threads, comment chains, or discussion forums to get the key points without reading everything.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🧰</div>
+          <h3 class="feature-title">Multiple Summary Formats</h3>
+          <p>Choose between brief summaries, bullet points, or key takeaways based on your preference.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3 class="feature-title">Customizable Settings</h3>
+          <p>Control how and when summaries appear with options for trigger mode, summary length, and theme.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h3 class="feature-title">Context Menu Integration</h3>
+          <p>Right-click to summarize any page or selection manually when you need it.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🧭</div>
+          <h3 class="feature-title">Scroll Tags</h3>
+          <p>Visual indicators on the scroll bar show where summaries are available on the page.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="container">
+      <h2>How It Works</h2>
+      <div class="demo">
+        <p>Auto TL;DR uses Google's Gemini 2.0 Flash Lite AI to generate high-quality summaries of web content. As you browse, the extension detects large blocks of text and offers to summarize them, saving you time and helping you get the key points quickly.</p>
+        <div class="demo-image">
+          <!-- Placeholder for demo image -->
+          <svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="800" height="400" fill="#f0f0f0" />
+            <text x="400" y="200" font-family="Arial" font-size="24" text-anchor="middle">Demo Image Placeholder</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+    
+    <section class="installation">
+      <div class="container">
+        <h2>Installation</h2>
+        <div class="installation-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Clone the Repository</h3>
+            <p>Get the code from GitHub:</p>
+            <pre><code>git clone https://github.com/chirag127/Auto-TL-DR.git</code></pre>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Set Up the Backend</h3>
+            <p>Navigate to the backend directory and install dependencies:</p>
+            <pre><code>cd Auto-TL-DR/backend
+npm install</code></pre>
+            <p>Create a <code>.env</code> file with your Gemini API key:</p>
+            <pre><code>GEMINI_API_KEY=your_api_key_here
+PORT=3000</code></pre>
+            <p>Start the server:</p>
+            <pre><code>npm start</code></pre>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Load the Extension</h3>
+            <p>For Chrome:</p>
+            <ul>
+              <li>Open Chrome and navigate to <code>chrome://extensions/</code></li>
+              <li>Enable "Developer mode"</li>
+              <li>Click "Load unpacked" and select the <code>Nextension</code> directory</li>
+            </ul>
+            <p>For Firefox:</p>
+            <ul>
+              <li>Open Firefox and navigate to <code>about:debugging#/runtime/this-firefox</code></li>
+              <li>Click "Load Temporary Add-on" and select any file in the <code>Nextension</code> directory</li>
+            </ul>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Start Using Auto TL;DR</h3>
+            <p>Browse the web as usual. When the extension detects large blocks of text, it will offer to summarize them. Click on the summary indicator to view the summary, or right-click on any page or selection to summarize it manually.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Auto TL;DR. Created by <a href="https://github.com/chirag127" class="footer-link">Chirag Singhal</a>.</p>
+      <div class="footer-links">
+        <a href="https://github.com/chirag127/Auto-TL-DR" class="footer-link">GitHub</a>
+        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="https://github.com/chirag127/Auto-TL-DR/issues" class="footer-link">Report Issues</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

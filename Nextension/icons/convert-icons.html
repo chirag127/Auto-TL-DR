@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert SVG to PNG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    canvas {
+      border: 1px solid #ddd;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3a80d2;
+    }
+    .instructions {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Convert SVG to PNG Icons</h1>
+  
+  <div class="instructions">
+    <h2>Instructions:</h2>
+    <ol>
+      <li>This tool will convert the SVG icon to PNG files in different sizes.</li>
+      <li>Click the "Generate Icons" button to create the PNG versions.</li>
+      <li>Right-click on each icon and select "Save Image As..." to save them with the correct filenames.</li>
+      <li>Save them as:
+        <ul>
+          <li>16x16 → icon16.png</li>
+          <li>48x48 → icon48.png</li>
+          <li>128x128 → icon128.png</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  
+  <button id="generateBtn">Generate Icons</button>
+  
+  <div class="container" id="iconsContainer">
+    <!-- Icons will be generated here -->
+  </div>
+  
+  <script>
+    document.getElementById('generateBtn').addEventListener('click', generateIcons);
+    
+    function generateIcons() {
+      const container = document.getElementById('iconsContainer');
+      container.innerHTML = ''; // Clear previous icons
+      
+      const sizes = [16, 48, 128];
+      
+      // Load the SVG
+      const img = new Image();
+      img.onload = function() {
+        sizes.forEach(size => {
+          const iconContainer = document.createElement('div');
+          iconContainer.className = 'icon-container';
+          
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, size, size);
+          
+          const label = document.createElement('p');
+          label.textContent = `${size}x${size} (Save as icon${size}.png)`;
+          
+          const downloadBtn = document.createElement('button');
+          downloadBtn.textContent = `Download icon${size}.png`;
+          downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+          });
+          
+          iconContainer.appendChild(label);
+          iconContainer.appendChild(canvas);
+          iconContainer.appendChild(downloadBtn);
+          container.appendChild(iconContainer);
+        });
+      };
+      img.src = 'icon.svg';
+    }
+  </script>
+</body>
+</html>
